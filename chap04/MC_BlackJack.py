@@ -3,11 +3,10 @@
 from random import shuffle
 from queue import Queue
 from tqdm import tqdm
-import math
 import matplotlib.pyplot as plt
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
-from utils04 import str_key, set_dict, get_dict
+from chap04.utils04 import str_key, set_dict, get_dict
 
 
 class Gamer():
@@ -173,11 +172,9 @@ class Arena():
         player.receive(cards)
         player.cards_info()
 
-
     def _info(self, message):
         if self.display:
             print(message, end="")
-
 
     def recycle_cards(self, *players):
         if len(players) == 0:
@@ -186,7 +183,6 @@ class Arena():
             for card in player.cards:
                 self.cards_in_pool.append(card)
             player.discharge_cards()
-
 
     def play_game(self, dealer, player):
         self._info("===== start a new round =====\n")
