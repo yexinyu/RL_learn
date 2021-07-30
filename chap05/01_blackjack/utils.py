@@ -109,18 +109,17 @@ def draw_policy(policy, A, Q, epsilon, useable_ace = False):
             return 0
         else:
             return 1
-
     rows, cols = 11, 10
     useable_ace = bool(useable_ace)
     Z = np.zeros((rows, cols))
-    dealer_first_card = np.arange(1,12)
-    player_points = np.arange(12,22)
+    dealer_first_card = np.arange(1, 12)
+    player_points = np.arange(12, 22)
     for i in range(11, 22):
         for j in range(1, 11):
             s = j, i, useable_ace
             s= str_key(s)
             a = policy(A, s, Q, epsilon)
             Z[i-11, j-1] = value_of(a)
-
     plt.imshow(Z, cmap=plt.cm.cool, interpolation=None, origin="lower", extent=[0.5, 11.5, 10.5, 21.5])
+    plt.show()
 

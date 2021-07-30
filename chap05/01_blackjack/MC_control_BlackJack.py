@@ -41,3 +41,16 @@ class MC_Player(Player):
             if epsilon is None:
                 epsilon = 1.0/(1 + 4 * math.log10(1+player.total_learning_times))
             return epsilon_greedy_policy(A, s, Q, epsilon)
+
+
+if __name__ == '__main__':
+    A = ["继续叫牌", "停止叫牌"]
+    display = False
+    player = MC_Player(A=A, display=display)
+    dealer = Dealer(A=A, display=display)
+    arena = Arena(A=A, display=display)
+    arena.play_games(dealer=dealer, player=player, num=200000, show_statistic=True)
+    draw_value(player.Q, useable_ace=True, is_q_dict=True, A=player.A)
+    draw_policy(epsilon_greedy_policy, player.A, player.Q, epsilon=1e-10, useable_ace=True)
+    draw_value(player.Q, useable_ace=False, is_q_dict=True, A=player.A)
+    draw_policy(epsilon_greedy_policy, player.A, player.Q, epsilon=1e-10, useable_ace=False)
