@@ -217,10 +217,10 @@ class Agent(object):
             if epsilon is None:
                 epsilon = 1e-10
             elif decaying_epsilon:
-                epsilon = 1.0 / (1 + num_episodes)
+                epsilon = 1.0 / (1 + num_episode)
             time_in_episode, episode_reward = self.learning_method(lambda_=lambda_,
                                                                    gamma=gamma, alpha=alpha, epsilon=epsilon,
-                                                                   isplay=display)
+                                                                   display=display)
             total_time += time_in_episode
             num_episode += 1
             total_times.append(total_time)
